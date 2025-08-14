@@ -840,6 +840,206 @@ function loadDonors() {
     `).join('');
 }
 
+// Chatbot Functions
+let chatbotExpanded = true;
+
+function toggleChatbot() {
+    const chatbotBody = document.getElementById('chatbotBody');
+    const chatToggle = document.getElementById('chatToggle');
+    
+    chatbotExpanded = !chatbotExpanded;
+    
+    if (chatbotExpanded) {
+        chatbotBody.classList.remove('collapsed');
+        chatToggle.className = 'fas fa-chevron-down';
+    } else {
+        chatbotBody.classList.add('collapsed');
+        chatToggle.className = 'fas fa-chevron-up';
+    }
+}
+
+function sendChatMessage() {
+    const chatInput = document.getElementById('chatInput');
+    const message = chatInput.value.trim();
+    
+    if (message === '') return;
+    
+    addUserMessage(message);
+    chatInput.value = '';
+    
+    // Simulate bot response
+    setTimeout(() => {
+        const botResponse = getBotResponse(message);
+        addBotMessage(botResponse);
+    }, 1000);
+}
+
+function sendQuickMessage(message) {
+    addUserMessage(message);
+    
+    setTimeout(() => {
+        const botResponse = getBotResponse(message);
+        addBotMessage(botResponse);
+    }, 1000);
+}
+
+function addUserMessage(message) {
+    const chatMessages = document.getElementById('chatMessages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'user-message';
+    messageDiv.innerHTML = `
+        <div class="message-avatar">
+            <i class="fas fa-user"></i>
+        </div>
+        <div class="message-content">${message}</div>
+    `;
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function addBotMessage(message) {
+    const chatMessages = document.getElementById('chatMessages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'bot-message';
+    messageDiv.innerHTML = `
+        <div class="message-avatar">
+            <i class="fas fa-robot"></i>
+        </div>
+        <div class="message-content">${message}</div>
+    `;
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function getBotResponse(message) {
+    const lowerMessage = message.toLowerCase();
+    
+    if (lowerMessage.includes('hack') || lowerMessage.includes('free fire') || lowerMessage.includes('ff')) {
+        return `🔥 <strong>Free Fire Hack miễn phí!</strong><br><br>
+        ✅ Auto Aim, Wall Hack, Speed Hack<br>
+        ✅ Hỗ trợ Android & PC<br>
+        ✅ Hướng dẫn cài đặt chi tiết<br><br>
+        <button onclick="openHackModal()" style="background: linear-gradient(45deg, #ff6b6b, #ff8e53); color: white; border: none; padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer;">🔥 Tải ngay</button>`;
+    }
+    
+    if (lowerMessage.includes('tư vấn') || lowerMessage.includes('acc') || lowerMessage.includes('tài khoản')) {
+        return `🎮 <strong>Tư vấn tài khoản game</strong><br><br>
+        Chúng tôi có các loại tài khoản:<br>
+        • League of Legends (Diamond+): 500k-2M<br>
+        • Valorant (Immortal+): 800k-3M<br>
+        • PUBG (Crown+): 300k-1M<br>
+        • FIFA (Division 1+): 400k-1.5M<br><br>
+        Tất cả tài khoản đều:<br>
+        ✅ Bảo mật cao, không bị khóa<br>
+        ✅ Có nhiều skin đẹp<br>
+        ✅ Hỗ trợ đổi trả trong 7 ngày<br><br>
+        Bạn muốn tài khoản game nào?`;
+    }
+    
+    if (lowerMessage.includes('giá') || lowerMessage.includes('bao nhiêu') || lowerMessage.includes('tiền')) {
+        return `💰 <strong>Bảng giá tài khoản</strong><br><br>
+        🎯 <strong>League of Legends:</strong><br>
+        • Gold: 200k-400k<br>
+        • Platinum: 400k-700k<br>
+        • Diamond: 700k-1.5M<br>
+        • Master+: 1.5M-3M<br><br>
+        🔫 <strong>Valorant:</strong><br>
+        • Diamond: 500k-1M<br>
+        • Immortal: 1M-2.5M<br>
+        • Radiant: 2.5M-5M<br><br>
+        💳 Hỗ trợ thanh toán: Momo, Banking, Thẻ cào`;
+    }
+    
+    if (lowerMessage.includes('cài đặt') || lowerMessage.includes('hướng dẫn')) {
+        return `📋 <strong>Hướng dẫn cài đặt hack FF:</strong><br><br>
+        📱 <strong>Android:</strong><br>
+        1. Tải APK về máy<br>
+        2. Bật "Nguồn không xác định"<br>
+        3. Cài đặt và chạy<br><br>
+        💻 <strong>PC:</strong><br>
+        1. Tải file ZIP<br>
+        2. Giải nén và chạy .exe<br>
+        3. Mở BlueStacks/LDPlayer<br><br>
+        ⚠️ <strong>Lưu ý:</strong> Sử dụng hack có thể bị ban!`;
+    }
+    
+    if (lowerMessage.includes('xin chào') || lowerMessage.includes('hello') || lowerMessage.includes('hi')) {
+        return `👋 Xin chào! Tôi là GameBot, trợ lý ảo của GameShop.<br><br>
+        Tôi có thể giúp bạn:<br>
+        🎮 Tư vấn mua tài khoản game<br>
+        🔥 Hướng dẫn hack Free Fire<br>
+        💰 Báo giá và thanh toán<br>
+        📞 Hỗ trợ kỹ thuật<br><br>
+        Bạn cần hỗ trợ gì ạ?`;
+    }
+    
+    // Default response
+    return `🤖 Cảm ơn bạn đã nhắn tin! Tôi hiểu bạn đang quan tâm đến:<br><br>
+    • Tư vấn mua tài khoản game<br>
+    • Hack Free Fire miễn phí<br>
+    • Báo giá và thanh toán<br><br>
+    Bạn có thể sử dụng các nút bên dưới hoặc gõ câu hỏi cụ thể nhé! 😊`;
+}
+
+function handleChatKeyPress(event) {
+    if (event.key === 'Enter') {
+        sendChatMessage();
+    }
+}
+
+// FF Hack Modal Functions
+function openHackModal() {
+    document.getElementById('ffHackModal').style.display = 'block';
+}
+
+function closeHackModal() {
+    document.getElementById('ffHackModal').style.display = 'none';
+}
+
+function showInstruction(type) {
+    // Hide all instruction contents
+    document.querySelectorAll('.instruction-content').forEach(content => {
+        content.classList.remove('active');
+    });
+    
+    // Remove active class from all tabs
+    document.querySelectorAll('.instruction-tabs .tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Show selected instruction
+    document.getElementById(type + 'Instructions').classList.add('active');
+    event.target.classList.add('active');
+}
+
+function downloadHack(platform) {
+    const downloads = {
+        android: {
+            name: 'FF_Hack_Android_v2.1.apk',
+            size: '15.2 MB'
+        },
+        pc: {
+            name: 'FF_Hack_PC_v2.1.zip',
+            size: '8.7 MB'
+        }
+    };
+    
+    const download = downloads[platform];
+    
+    // Simulate download
+    showAlert(`Đang tải ${download.name} (${download.size})...`, 'success');
+    
+    // Create fake download link
+    const link = document.createElement('a');
+    link.href = '#';
+    link.download = download.name;
+    link.click();
+    
+    setTimeout(() => {
+        showAlert(`Tải xuống ${download.name} thành công! Vui lòng làm theo hướng dẫn cài đặt.`, 'success');
+    }, 2000);
+}
+
 function saveData() {
     localStorage.setItem('gameShopUsers', JSON.stringify(users));
     localStorage.setItem('gameShopAccounts', JSON.stringify(accounts));
