@@ -12,7 +12,7 @@
         <div class="nav-container">
             <div class="nav-logo">
                 <i class="fas fa-gamepad"></i>
-                <span>GameShop</span>
+                <span>Linh gầy.io</span>
             </div>
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link">Trang chủ</a></li>
@@ -342,6 +342,111 @@
                 <!-- Account details will be loaded here -->
             </div>
         </div>
+    </div>
+
+    <!-- FF Hack Modal -->
+    <div id="ffHackModal" class="modal">
+        <div class="modal-content hack-modal">
+            <span class="close" onclick="closeHackModal()">&times;</span>
+            <div class="hack-header">
+                <i class="fas fa-shield-alt"></i>
+                <h2>Free Fire Hack - Miễn Phí 100%</h2>
+            </div>
+            <div class="hack-content">
+                <div class="hack-features">
+                    <h3>🎯 Tính năng hack:</h3>
+                    <ul>
+                        <li>✅ Auto Aim (Tự ngắm)</li>
+                        <li>✅ Wall Hack (Nhìn xuyên tường)</li>
+                        <li>✅ Speed Hack (Tăng tốc độ)</li>
+                        <li>✅ No Recoil (Không giật súng)</li>
+                        <li>✅ Unlimited Ammo (Đạn không giới hạn)</li>
+                        <li>✅ ESP (Hiển thị kẻ địch)</li>
+                    </ul>
+                </div>
+                <div class="hack-download">
+                    <h3>📥 Tải xuống:</h3>
+                    <div class="download-buttons">
+                        <button class="download-btn" onclick="downloadHack('android')">
+                            <i class="fab fa-android"></i> Android APK
+                        </button>
+                        <button class="download-btn" onclick="downloadHack('pc')">
+                            <i class="fas fa-desktop"></i> PC Version
+                        </button>
+                    </div>
+                </div>
+                <div class="hack-instructions">
+                    <h3>📋 Hướng dẫn cài đặt:</h3>
+                    <div class="instruction-tabs">
+                        <button class="tab-btn active" onclick="showInstruction('android')">Android</button>
+                        <button class="tab-btn" onclick="showInstruction('pc')">PC</button>
+                    </div>
+                    <div id="androidInstructions" class="instruction-content active">
+                        <ol>
+                            <li>Tải file APK về máy</li>
+                            <li>Bật "Nguồn không xác định" trong Cài đặt</li>
+                            <li>Cài đặt file APK</li>
+                            <li>Mở ứng dụng và bật hack</li>
+                            <li>Vào Free Fire và tận hưởng!</li>
+                        </ol>
+                    </div>
+                    <div id="pcInstructions" class="instruction-content">
+                        <ol>
+                            <li>Tải file ZIP về máy</li>
+                            <li>Giải nén file</li>
+                            <li>Chạy file .exe với quyền Admin</li>
+                            <li>Chọn tính năng muốn sử dụng</li>
+                            <li>Mở Free Fire trên BlueStacks/LDPlayer</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="hack-warning">
+                    <p><i class="fas fa-exclamation-triangle"></i> <strong>Lưu ý:</strong> Sử dụng hack có thể bị ban tài khoản. Hãy cân nhắc kỹ trước khi sử dụng!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot -->
+    <div id="chatbot" class="chatbot">
+        <div class="chatbot-header" onclick="toggleChatbot()">
+            <i class="fas fa-robot"></i>
+            <span>GameBot</span>
+            <i class="fas fa-chevron-up" id="chatToggle"></i>
+        </div>
+        <div class="chatbot-body" id="chatbotBody">
+            <div class="chat-messages" id="chatMessages">
+                <div class="bot-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        Xin chào! Tôi là GameBot. Tôi có thể giúp bạn:
+                        <br>• Tư vấn mua tài khoản game
+                        <br>• Hướng dẫn cài hack Free Fire
+                        <br>• Giải đáp thắc mắc
+                        <br><br>Bạn cần hỗ trợ gì?
+                    </div>
+                </div>
+            </div>
+            <div class="chat-quick-actions">
+                <button class="quick-btn" onclick="sendQuickMessage('Tư vấn mua acc')">🎮 Tư vấn acc</button>
+                <button class="quick-btn" onclick="sendQuickMessage('Hack Free Fire')">🔥 Hack FF</button>
+                <button class="quick-btn" onclick="sendQuickMessage('Giá tài khoản')">💰 Giá cả</button>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chatInput" placeholder="Nhập tin nhắn..." onkeypress="handleChatKeyPress(event)">
+                <button onclick="sendChatMessage()">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Hack Button -->
+    <div class="floating-hack-btn" onclick="openHackModal()">
+        <i class="fas fa-fire"></i>
+        <span>FREE HACK</span>
     </div>
 
     <script src="script.js"></script>
