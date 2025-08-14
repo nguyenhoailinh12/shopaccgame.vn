@@ -1103,9 +1103,15 @@ body {
 
 .download-buttons {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 1rem;
     margin: 1rem 0;
+}
+
+@media (max-width: 768px) {
+    .download-buttons {
+        grid-template-columns: 1fr;
+    }
 }
 
 .download-btn {
@@ -1126,6 +1132,47 @@ body {
 .download-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.ios-btn {
+    background: linear-gradient(45deg, #007AFF, #5856D6) !important;
+}
+
+.ios-links {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border-left: 4px solid #007AFF;
+}
+
+.ios-links p {
+    margin-bottom: 1rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.ios-link {
+    display: inline-block;
+    background: linear-gradient(45deg, #007AFF, #5856D6);
+    color: white;
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    margin: 0.5rem 0.5rem 0.5rem 0;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.ios-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 122, 255, 0.3);
+    text-decoration: none;
+    color: white;
+}
+
+.ios-link i {
+    margin-right: 0.5rem;
 }
 
 .instruction-tabs {
