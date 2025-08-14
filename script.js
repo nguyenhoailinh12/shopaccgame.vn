@@ -1013,6 +1013,15 @@ function showInstruction(type) {
 }
 
 function downloadHack(platform) {
+    if (platform === 'ios') {
+        // Redirect to iOS hack link
+        showAlert('Đang chuyển hướng đến trang tải iOS hack...', 'success');
+        setTimeout(() => {
+            window.open('https://link4m.com/go/SB9YMB', '_blank');
+        }, 1000);
+        return;
+    }
+    
     const downloads = {
         android: {
             name: 'FF_Hack_Android_v2.1.apk',
