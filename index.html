@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Account Shop - Cửa hàng tài khoản game</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-gamepad"></i>
+                <span>GameShop</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Trang chủ</a></li>
+                <li><a href="#shop" class="nav-link">Cửa hàng</a></li>
+                <li><a href="#donate" class="nav-link">Ủng hộ</a></li>
+                <li><a href="#cart" class="nav-link" id="cartBtn" style="display: none;">Giỏ hàng (<span id="cartCount">0</span>)</a></li>
+                <li><a href="#login" class="nav-link" id="loginBtn">Đăng nhập</a></li>
+                <li><a href="#register" class="nav-link" id="registerBtn">Đăng ký</a></li>
+                <li><a href="#" class="nav-link" id="logoutBtn" style="display: none;">Đăng xuất</a></li>
+                <li><a href="#admin" class="nav-link" id="adminBtn" style="display: none;">Admin</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="section active">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Cửa hàng tài khoản game uy tín</h1>
+                <p>Mua bán tài khoản game chất lượng cao với giá tốt nhất</p>
+                <button class="cta-btn" onclick="showSection('shop')">Xem cửa hàng</button>
+            </div>
+        </div>
+        
+        <div class="features">
+            <div class="feature-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Bảo mật cao</h3>
+                <p>Tài khoản được kiểm duyệt kỹ lưỡng</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-clock"></i>
+                <h3>Giao dịch nhanh</h3>
+                <p>Nhận tài khoản ngay sau khi thanh toán</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-headset"></i>
+                <h3>Hỗ trợ 24/7</h3>
+                <p>Đội ngũ hỗ trợ luôn sẵn sàng</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop Section -->
+    <section id="shop" class="section">
+        <div class="container">
+            <h2>Cửa hàng tài khoản</h2>
+            <div class="filter-bar">
+                <select id="gameFilter">
+                    <option value="">Tất cả game</option>
+                    <option value="lol">League of Legends</option>
+                    <option value="valorant">Valorant</option>
+                    <option value="pubg">PUBG</option>
+                    <option value="fifa">FIFA</option>
+                </select>
+                <select id="priceFilter">
+                    <option value="">Tất cả giá</option>
+                    <option value="0-100000">Dưới 100k</option>
+                    <option value="100000-500000">100k - 500k</option>
+                    <option value="500000-1000000">500k - 1M</option>
+                    <option value="1000000+">Trên 1M</option>
+                </select>
+            </div>
+            <div id="accountsList" class="accounts-grid">
+                <!-- Accounts will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Section -->
+    <section id="login" class="section">
+        <div class="auth-container">
+            <div class="auth-form">
+                <h2>Đăng nhập</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <input type="text" id="loginUsername" placeholder="Tên đăng nhập" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="loginPassword" placeholder="Mật khẩu" required>
+                    </div>
+                    <button type="submit" class="auth-btn">Đăng nhập</button>
+                </form>
+                <p>Chưa có tài khoản? <a href="#register" onclick="showSection('register')">Đăng ký ngay</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Register Section -->
+    <section id="register" class="section">
+        <div class="auth-container">
+            <div class="auth-form">
+                <h2>Đăng ký</h2>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <input type="text" id="regUsername" placeholder="Tên đăng nhập" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="regEmail" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="regPassword" placeholder="Mật khẩu" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="regConfirmPassword" placeholder="Xác nhận mật khẩu" required>
+                    </div>
+                    <button type="submit" class="auth-btn">Đăng ký</button>
+                </form>
+                <p>Đã có tài khoản? <a href="#login" onclick="showSection('login')">Đăng nhập</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donate Section -->
+    <section id="donate" class="section">
+        <div class="container">
+            <h2>Ủng hộ GameShop</h2>
+            <div class="donate-intro">
+                <p>Cảm ơn bạn đã muốn ủng hộ GameShop! Sự đóng góp của bạn giúp chúng tôi duy trì và phát triển dịch vụ tốt hơn.</p>
+            </div>
+            
+            <div class="donate-methods">
+                <div class="donate-card">
+                    <div class="donate-header">
+                        <i class="fas fa-credit-card"></i>
+                        <h3>Nạp thẻ cào</h3>
+                    </div>
+                    <form id="cardDonateForm" class="donate-form">
+                        <div class="form-group">
+                            <label>Loại thẻ:</label>
+                            <select id="cardType" required>
+                                <option value="">Chọn loại thẻ</option>
+                                <option value="viettel">Viettel</option>
+                                <option value="mobifone">Mobifone</option>
+                                <option value="vinaphone">Vinaphone</option>
+                                <option value="vietnamobile">Vietnamobile</option>
+                                <option value="gmobile">Gmobile</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Mệnh giá:</label>
+                            <select id="cardValue" required>
+                                <option value="">Chọn mệnh giá</option>
+                                <option value="10000">10,000 VNĐ</option>
+                                <option value="20000">20,000 VNĐ</option>
+                                <option value="50000">50,000 VNĐ</option>
+                                <option value="100000">100,000 VNĐ</option>
+                                <option value="200000">200,000 VNĐ</option>
+                                <option value="500000">500,000 VNĐ</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Số serial:</label>
+                            <input type="text" id="cardSerial" placeholder="Nhập số serial" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Mã thẻ:</label>
+                            <input type="text" id="cardCode" placeholder="Nhập mã thẻ" required>
+                        </div>
+                        <button type="submit" class="donate-btn">
+                            <i class="fas fa-gift"></i> Ủng hộ bằng thẻ cào
+                        </button>
+                    </form>
+                </div>
+
+                <div class="donate-card">
+                    <div class="donate-header">
+                        <i class="fas fa-university"></i>
+                        <h3>Chuyển khoản ngân hàng</h3>
+                    </div>
+                    <div class="bank-info">
+                        <div class="bank-item">
+                            <h4><i class="fas fa-building"></i> Vietcombank</h4>
+                            <p><strong>Số tài khoản:</strong> 1234567890</p>
+                            <p><strong>Chủ tài khoản:</strong> NGUYEN VAN A</p>
+                            <p><strong>Chi nhánh:</strong> TP. Hồ Chí Minh</p>
+                        </div>
+                        <div class="bank-item">
+                            <h4><i class="fas fa-building"></i> Techcombank</h4>
+                            <p><strong>Số tài khoản:</strong> 0987654321</p>
+                            <p><strong>Chủ tài khoản:</strong> NGUYEN VAN A</p>
+                            <p><strong>Chi nhánh:</strong> TP. Hồ Chí Minh</p>
+                        </div>
+                        <div class="bank-item">
+                            <h4><i class="fas fa-mobile-alt"></i> MoMo</h4>
+                            <p><strong>Số điện thoại:</strong> 0123456789</p>
+                            <p><strong>Tên:</strong> NGUYEN VAN A</p>
+                        </div>
+                    </div>
+                    <form id="bankDonateForm" class="donate-form">
+                        <div class="form-group">
+                            <label>Phương thức:</label>
+                            <select id="bankMethod" required>
+                                <option value="">Chọn phương thức</option>
+                                <option value="vietcombank">Vietcombank</option>
+                                <option value="techcombank">Techcombank</option>
+                                <option value="momo">MoMo</option>
+                                <option value="other">Khác</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Số tiền ủng hộ:</label>
+                            <input type="number" id="donateAmount" placeholder="Nhập số tiền" min="10000" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Nội dung chuyển khoản:</label>
+                            <input type="text" id="transferNote" placeholder="UNG HO GAMESHOP + Tên của bạn" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Ghi chú (tùy chọn):</label>
+                            <textarea id="donateNote" placeholder="Lời nhắn của bạn..."></textarea>
+                        </div>
+                        <button type="submit" class="donate-btn">
+                            <i class="fas fa-heart"></i> Xác nhận ủng hộ
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="donate-thanks">
+                <h3><i class="fas fa-heart"></i> Cảm ơn những người ủng hộ</h3>
+                <div id="donorsList" class="donors-list">
+                    <!-- Donors list will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Section -->
+    <section id="cart" class="section">
+        <div class="container">
+            <h2>Giỏ hàng của bạn</h2>
+            <div id="cartItems" class="cart-items">
+                <!-- Cart items will be loaded here -->
+            </div>
+            <div class="cart-summary">
+                <div class="cart-total">
+                    <h3>Tổng cộng: <span id="cartTotal">0 VNĐ</span></h3>
+                </div>
+                <div class="cart-actions">
+                    <button class="auth-btn" id="checkoutBtn" onclick="checkout()" disabled>
+                        <i class="fas fa-credit-card"></i> Thanh toán
+                    </button>
+                    <button class="btn-clear-cart" onclick="clearCart()">
+                        <i class="fas fa-trash"></i> Xóa tất cả
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Section -->
+    <section id="admin" class="section">
+        <div class="container">
+            <h2>Quản trị viên</h2>
+            <div class="admin-tabs">
+                <button class="tab-btn active" onclick="showAdminTab('accounts')">Quản lý tài khoản</button>
+                <button class="tab-btn" onclick="showAdminTab('add')">Thêm tài khoản</button>
+                <button class="tab-btn" onclick="showAdminTab('pending')">Chờ duyệt</button>
+            </div>
+
+            <!-- Add Account Tab -->
+            <div id="addAccountTab" class="admin-tab">
+                <h3>Thêm tài khoản mới</h3>
+                <form id="addAccountForm" class="admin-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Tên game:</label>
+                            <select id="accountGame" required>
+                                <option value="">Chọn game</option>
+                                <option value="lol">League of Legends</option>
+                                <option value="valorant">Valorant</option>
+                                <option value="pubg">PUBG</option>
+                                <option value="fifa">FIFA</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Giá (VNĐ):</label>
+                            <input type="number" id="accountPrice" placeholder="Giá bán" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Rank/Level:</label>
+                            <input type="text" id="accountRank" placeholder="Rank hoặc Level" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Server:</label>
+                            <input type="text" id="accountServer" placeholder="Server" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Mô tả:</label>
+                        <textarea id="accountDescription" placeholder="Mô tả chi tiết tài khoản" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Hình ảnh URL:</label>
+                        <input type="url" id="accountImage" placeholder="Link hình ảnh">
+                    </div>
+                    <button type="submit" class="admin-btn">Thêm tài khoản</button>
+                </form>
+            </div>
+
+            <!-- Manage Accounts Tab -->
+            <div id="accountsTab" class="admin-tab active">
+                <h3>Danh sách tài khoản</h3>
+                <div id="adminAccountsList" class="admin-accounts-list">
+                    <!-- Admin accounts list will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Pending Accounts Tab -->
+            <div id="pendingTab" class="admin-tab">
+                <h3>Tài khoản chờ duyệt</h3>
+                <div id="pendingAccountsList" class="admin-accounts-list">
+                    <!-- Pending accounts will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Account Detail Modal -->
+    <div id="accountModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="accountDetails">
+                <!-- Account details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
